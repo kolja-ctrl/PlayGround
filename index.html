@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fortnite Clone — Block Royale | 3D Battle Royale (Desktop)</title>
+<link rel="stylesheet" href="style.css" />
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+  }
+}
+</script>
+</head>
+<body>
+<div id="game-container"></div>
+
+<!-- Crosshair -->
+<div id="crosshair" class="hidden">
+  <div class="ch-dot"></div>
+  <div class="ch-line ch-t"></div>
+  <div class="ch-line ch-b"></div>
+  <div class="ch-line ch-l"></div>
+  <div class="ch-line ch-r"></div>
+</div>
+<div id="hitmarker"></div>
+
+<!-- HUD -->
+<div id="hud" class="hidden">
+  <div id="top-bar">
+    <div id="alive-box"><span id="alive-count">12</span><small>ALIVE</small></div>
+    <div id="storm-status">STORM: <span id="storm-timer">--</span></div>
+    <div id="kill-box"><span id="kill-count">0</span><small>KILLS</small></div>
+  </div>
+  <div id="killfeed"></div>
+  <canvas id="minimap" width="160" height="160"></canvas>
+  <div id="interact-prompt" class="hidden">Press <b>E</b> <span id="interact-text"></span></div>
+  <div id="bottom-hud">
+    <div id="weapon-slots"></div>
+    <div id="bars">
+      <div id="shield-bar"><div id="shield-fill"></div><span id="shield-num">0</span></div>
+      <div id="hp-bar"><div id="hp-fill"></div><span id="hp-num">100</span></div>
+      <div id="info-row">
+        <span id="ammo-label">🔫 30 / ∞</span>
+        <span id="mats-label">🧱 Wood: 100</span>
+        <span id="build-label">BUILD: OFF (Q)</span>
+      </div>
+    </div>
+  </div>
+  <div id="damage-vignette"></div>
+  <div id="storm-warning" class="hidden">⚠ STORM SHRINKING — GET TO ZONE ⚠</div>
+</div>
+
+<!-- Main menu -->
+<div id="menu">
+  <div class="menu-card">
+    <div class="logo-sub">BLOCK BATTLE</div>
+    <h1 class="logo">FORT<span>NITE</span> <em>CLONE</em></h1>
+    <p class="tagline">Drop in. Loot up. Build. Be the last one standing.</p>
+    <div class="menu-stats">
+      <div><b>12</b><span>players</span></div>
+      <div><b>1</b><span>island</span></div>
+      <div><b>∞</b><span>builds</span></div>
+    </div>
+    <button id="play-btn">▶ &nbsp;DROP FROM BATTLE BUS</button>
+    <div class="controls-grid">
+      <div><kbd>W A S D</kbd><span>Move</span></div>
+      <div><kbd>Mouse</kbd><span>Look / Aim</span></div>
+      <div><kbd>Click</kbd><span>Shoot / Place build</span></div>
+      <div><kbd>Q</kbd><span>Build mode</span></div>
+      <div><kbd>1 2 3</kbd><span>Wall / Ramp / Floor</span></div>
+      <div><kbd>E</kbd><span>Pickup / Open chest</span></div>
+      <div><kbd>R</kbd><span>Reload</span></div>
+      <div><kbd>F</kbd><span>Harvest wood</span></div>
+      <div><kbd>Space / Shift</kbd><span>Jump / Sprint</span></div>
+      <div><kbd>Tab / Wheel</kbd><span>Switch weapon</span></div>
+      <div><kbd>4 / 5</kbd><span>Shield / Medkit</span></div>
+    </div>
+    <p class="tip">💡 Tip: chests glow gold. Harvest trees for wood. Stay inside the white circle!</p>
+  </div>
+</div>
+
+<!-- Death / Win -->
+<div id="end-screen" class="hidden">
+  <div class="menu-card">
+    <h1 id="end-title">#1 VICTORY ROYALE!</h1>
+    <p id="end-sub"></p>
+    <div id="end-stats"></div>
+    <button id="again-btn">↻ PLAY AGAIN</button>
+  </div>
+</div>
+
+<div id="loading">Loading island…</div>
+
+<script type="module" src="game.js"></script>
+</body>
+</html>
